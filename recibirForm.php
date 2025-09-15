@@ -2,12 +2,11 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// Obtener los valores del formulario
 	$nombre 	= $_POST['nombre'] ?? '';
-	$email 		= $_POST['email'] ?? '';
-	$address 	= 	$_POST['address'] ?? '';
-	$pais 		=	$_POST['pais'] ?? '';
+	$email 		= $_POST['apellido'] ?? '';
+	$pais 		=	$_POST['micro'] ?? '';
 
 	// Validar si se enviaron los valores
-	if (!empty($nombre) && !empty($email) && !empty($address) && !empty($pais)) {
+	if (!empty($nombre) && !empty($apellido) && !empty($pais)) {
 		// Ruta y nombre del archivo
 		$ruta_archivo = "./baseDatos.txt";
 
@@ -33,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if ($file) {
 			// Escribir la cabecera si el archivo no existe
 			if (!$archivo_existe) {
-				fwrite($file, "Id \tNombre Persona \t\tEmail Persona \t\t\tDirección \t\tPais" . PHP_EOL);
-				fwrite($file, "=========================================================================" . PHP_EOL);
+				fwrite($file, "Id \tNombre Persona \t\tApellido Persona \t\tPais" . PHP_EOL);
+				fwrite($file, "====================================================================" . PHP_EOL);
 			}
 
 			// Escribir el nuevo registro en el archivo con el formato requerido
-			fwrite($file, "$num_registros.\t$nombre\t\t\t$email\t\t\t$address\t\t$pais" . PHP_EOL);
+			fwrite($file, "$num_registros.\t$nombre\t\t\t$apellido\t\t\t$pais" . PHP_EOL);
 			fwrite($file, " -------------------------------------------------------------------------" . PHP_EOL);
 
 			// Cerrar el archivo
